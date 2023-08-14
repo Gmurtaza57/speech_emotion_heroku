@@ -65,9 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         const blob = new Blob(recordedChunks, { type: 'audio/wav' });
-        console.log('Blob created:', blob);
+        const fileName = 'recorded_audio.wav'; // Provide a meaningful filename here
         const formData = new FormData();
-        formData.append('audio', blob);
+        formData.append('audio', blob, fileName);
+        
         console.log('FormData created:', formData);
         try {
             const response = await fetch('/predict_emotion', {
