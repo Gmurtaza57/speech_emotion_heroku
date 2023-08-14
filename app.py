@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify, render_template
 import os
 import numpy as np
 import pandas as pd
-import soundfile
 import boto3
 import io
 from keras.models import load_model
@@ -85,4 +84,5 @@ def predict_emotion():
         return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=int(os.environ.get("PORT", 5000)))
+
