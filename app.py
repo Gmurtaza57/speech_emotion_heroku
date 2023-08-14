@@ -41,7 +41,7 @@ def predict_emotion():
         # Load the audio file using librosa
         print("Loading audio file using librosa...")
         try:
-            X, sample_rate = librosa.load(BytesIO(audio_stream), res_type='kaiser_fast', duration=2.5, sr=22050*2, offset=0.5)
+            X, sample_rate = librosa.load(io.BytesIO(audio_stream), res_type='kaiser_fast', duration=2.5, sr=22050*2, offset=0.5)
         except Exception as e:
             print("Error loading audio:", str(e))
 
