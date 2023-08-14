@@ -80,7 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('result').innerText = `Predicted Emotion: ${result.emotion}`;
                 document.getElementById('result').style.display = 'block';
                 downloadEmotionButton.style.display = 'block';
-                console.log('Server message:', result.message); // Print the server message
+                // Remove the line below since there's no 'message' key in the response
+                // console.log('Server message:', result.message);
             } else {
                 console.error('Error predicting emotion:', response.statusText);
             }
