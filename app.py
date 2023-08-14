@@ -6,6 +6,7 @@ import boto3
 import io
 from keras.models import load_model
 import librosa
+from io import BytesIO
 
 app = Flask(__name__)
 
@@ -34,12 +35,13 @@ def predict_emotion():
         s3.upload_fileobj(uploaded_file, bucket_name, uploaded_file.filename)
 
         # File URL in S3
-        file_url = f"https://{bucket_name}.s3.amazonaws.com/{uploaded_file.filename}"
-
+        # Load the audio file directly into librosa from S3
+        audio_object = s3.get_object(Bucket="my-audio-bucket-1", Key=uploaded_file.filename)
+        audio_stream = audio_object["Body"].read()
         # Load the audio file using librosa
         print("Loading audio file using librosa...")
         try:
-            X, sample_rate = librosa.load(file_url, res_type='kaiser_fast', duration=2.5, sr=22050*2, offset=0.5)
+            X, sample_rate = librosa.load(BytesIO(audio_stream), res_type='kaiser_fast', duration=2.5, sr=22050*2, offset=0.5)
         except Exception as e:
             print("Error loading audio:", str(e))
 
