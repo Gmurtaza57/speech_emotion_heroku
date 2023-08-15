@@ -21,7 +21,6 @@ def index():
 
 @app.route('/predict_emotion', methods=['POST'])
 def predict_emotion():
-    try:
         # Get the uploaded audio file from the request
         uploaded_file = request.files['audio']
 
@@ -110,8 +109,6 @@ def predict_emotion():
         return jsonify({
             'emotion': live_predictions[0]  # Assuming you're predicting a single emotion
         })
-    except Exception as e:
-        return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
     import os
