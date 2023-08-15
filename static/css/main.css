@@ -103,9 +103,9 @@ audio {
 
 .emotion-group {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;  /* Change this from column to row */
     gap: 10px;
-    justify-content: center;
+    align-items: center;  /* Optional: Center-aligns items vertically if they have different heights */
 }
 
 .header {
