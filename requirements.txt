@@ -8,3 +8,4 @@ requests==2.31.0
 Werkzeug==2.3.6
 librosa==0.10.0.post2
 numpy==1.23.5
+resampy
