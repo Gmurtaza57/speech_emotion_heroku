@@ -64,8 +64,8 @@ def predict_emotion():
                 print("Error loading audio:", str(e))
                 print("Error type:", type(e))
         
-    for warning in w:
-        print("Warning:", warning.message)
+            for warning in w:
+                print("Warning:", warning.message)
 
         print("X shape:", X.shape)
         print("Sample rate:", sample_rate)
