@@ -104,7 +104,7 @@ def predict_emotion():
 
         # Convert predictions to emotion labels using the provided mapping
         live_predictions = [emotion_mapping[prediction] for prediction in live_abc]
-
+        print(live_predictions[0])
         os.remove(temp_filename)
         # Return the prediction result in JSON format
         return jsonify({
