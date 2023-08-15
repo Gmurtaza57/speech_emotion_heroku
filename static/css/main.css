@@ -139,3 +139,16 @@ audio {
     color: #337ab7; /* Masculine color, like blue */
 }
 
+#result {
+    font-size: 24px;         /* Adjust the size as needed */
+    font-weight: bold;       /* Makes the text thicker */
+    color: #1d1c1c;             /* Change the color if needed */
+    border: 2px solid #5d3ab6;  /* Adds a border */
+    padding: 20px;           /* Adds some space around the text */
+    margin-top: 20px;        /* Adds some space above the result box */
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 10px;     /* Rounds the corners */
+    max-width: 80%;          /* Don't let the box be too wide */
+    margin-left: auto;       /* These two lines center the box */
+    margin-right: auto;      /* if it's less wide than 80% of its container */
+}
