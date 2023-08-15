@@ -9,32 +9,34 @@
 </head>
 <body>
 
-    <h1>Speech Emotion Prediction Using Machine Learning </h1>
+    <h1>Speech Emotion Recognition Using Machine Learning </h1>
     <section class="emotion-list">
-        <div class="group female">
-            <div class="emotion female_angry">😡 Angry</div>
-            <div class="emotion female_calm">😌 Calm</div>
-            <div class="emotion female_fearful">😨 Fearful</div>
-            <div class="emotion female_happy">😄 Happy</div>
-            <div class="emotion female_sad">😢 Sad</div>
+        <div class="emotion-group male">
+            <div class="header">♂ Male</div>
+            <div class="emotion angry">😡 Angry</div>
+            <div class="emotion calm">😌 Calm</div>
+            <div class="emotion fearful">😨 Fearful</div>
+            <div class="emotion happy">😄 Happy</div>
+            <div class="emotion sad">😢 Sad</div>
         </div>
-        
-        <div class="group male">
-            <div class="emotion male_angry">😡 Angry</div>
-            <div class="emotion male_calm">😌 Calm</div>
-            <div class="emotion male_fearful">😨 Fearful</div>
-            <div class="emotion male_happy">😄 Happy</div>
-            <div class="emotion male_sad">😢 Sad</div>
+    
+        <div class="emotion-group female">
+            <div class="header">♀ Female</div>
+            <div class="emotion angry">😡 Angry</div>
+            <div class="emotion calm">😌 Calm</div>
+            <div class="emotion fearful">😨 Fearful</div>
+            <div class="emotion happy">😄 Happy</div>
+            <div class="emotion sad">😢 Sad</div>
         </div>
     </section>
     
-    <h3>you can predict the emotion using the upload file and clicking upload and detect Emotion</h3>
+    <h3>To determine emotion, simply upload a file and click "Upload and Detect Emotion"</h3>
     <form action="/predict_emotion" method="post" enctype="multipart/form-data">
         <input type="file" name="audio" accept=".wav,.mp3" />
         <button type="submit">Upload and Detect Emotion</button>
     </form>
 
-    <h3>you can predict the emotion using start and stop button and then clicking the Analyze Recorded Audio</h3>
+    <h3>Use the 'Start' and 'Stop' buttons for recording, then unveil the emotion with 'Analyze Recorded Audio'.</h3>
     <button id="startButton">Start Recording</button>
     <button id="stopButton" disabled>Stop Recording</button>
     <button id="detectButton">Analyze Recorded Audio</button>
