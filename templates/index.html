@@ -1,20 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emotion Prediction</title>
+    <title>Ghulam Murtaza: ML Architect</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
 </head>
-<body>
+<body class="is-preload">
+<!-- Wrapper -->
+<div id="wrapper" class="fade-in">
 
-    <h1>Emotion Prediction</h1>
-    <h3>you can predict the emotion using the upload file and clicking upload and detect Emotion</h1>
+    <!-- Intro -->
+    <div id="intro">
+        <h1>Ghulam Murtaza Portfolio</h1>
+        <p>Dedicated to harnessing the power of data through Machine Learning. Showcasing a range of ML models, algorithms, and applications. Connect with me on <a href="https://www.linkedin.com/in/ghulam-murtaza-ms-310741110/">@My_Linkedin</a>.</p>
+        <ul class="actions">
+            <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo">Murtaza: ML Architect</a>
+    </header>
+    <main id="main">
+    <h2>Emotion Prediction</h2>
+    <div class="emotions-listing">
+        <!-- Emojis -->
+        <div class="emotion-emojis">
+            <span role="img" aria-label="female_angry">🤬</span>
+            <span role="img" aria-label="female_calm">😊</span>
+            <span role="img" aria-label="female_fearful">😨</span>
+            <span role="img" aria-label="female_happy">😃</span>
+            <span role="img" aria-label="female_sad">😢</span>
+            <span role="img" aria-label="male_angry">😡</span>
+            <span role="img" aria-label="male_calm">🙂</span>
+            <span role="img" aria-label="male_fearful">😱</span>
+            <span role="img" aria-label="male_happy">😄</span>
+            <span role="img" aria-label="male_sad">😔</span>
+        </div>
+        
+        <!-- Legends -->
+        <div class="emotion-legends">
+            <div><span>🤬</span>: Female Angry</div>
+            <div><span>😊</span>: Female Calm</div>
+            <div><span>😨</span>: Female Fearful</div>
+            <div><span>😃</span>: Female Happy</div>
+            <div><span>😢</span>: Female Sad</div>
+            <div><span>😡</span>: Male Angry</div>
+            <div><span>🙂</span>: Male Calm</div>
+            <div><span>😱</span>: Male Fearful</div>
+            <div><span>😄</span>: Male Happy</div>
+            <div><span>😔</span>: Male Sad</div>
+        </div>
+    </div>
+    
+    <p>you can predict the emotion using the upload file and clicking upload and detect Emotion</p>
     <form action="/predict_emotion" method="post" enctype="multipart/form-data">
         <input type="file" name="audio" accept=".wav,.mp3" />
         <button type="submit">Upload and Detect Emotion</button>
     </form>
 
-    <h3>you can predict the emotion using start and stop button and then clicking the Analyze Recorded Audio</h1>
+    <h2>you can predict the emotion using start and stop button and then clicking the Analyze Recorded Audio</h2>
     <button id="startButton">Start Recording</button>
     <button id="stopButton" disabled>Stop Recording</button>
     <button id="detectButton">Analyze Recorded Audio</button>
@@ -22,7 +70,7 @@
     <a id="downloadRecordingButton" style="display: none;" download="recorded_audio.ogg">Download Recording</a>
     <audio id="recordedAudio" controls style="display: none;"></audio>
     <div id="result"></div>
-    
+</main>
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
