@@ -37,15 +37,16 @@ def predict_emotion():
         # File URL in S3
         # Load the audio file directly into librosa from S3
         audio_object = s3.get_object(Bucket="my-audio-bucket-1", Key=uploaded_file.filename)
-        content_type = audio_object["ContentType"]
-        print("Content type:", content_type)
-
+        
+        with open(audio_object, 'rb') as f:
+            audio_stream = f.read()
+        print(list(audio_stream[:100]))
         audio_stream = audio_object["Body"].read()
         # Load the audio file using librosa
         print("Contents of audio_stream:", audio_stream)
         print("Loading audio file using librosa...")
         try:
-            X, sample_rate = librosa.load(io.BytesIO(audio_stream), res_type='kaiser_fast', duration=2.5, sr=22050*2, offset=0.5)
+            X, sample_rate = librosa.load(, res_type='kaiser_fast', duration=2.5, sr=22050*2, offset=0.5)
         except Exception as e:
             print("Error loading audio:", str(e))
 
