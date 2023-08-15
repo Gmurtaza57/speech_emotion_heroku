@@ -23,7 +23,10 @@ def index():
 def predict_emotion():
         # Get the uploaded audio file from the request
         uploaded_file = request.files['audio']
-
+        if uploaded_file and uploaded_file.filename:
+            file_name = uploaded_file.filename
+        else:
+            file_name = 'recorded_audio.wav'
         # Print a message to confirm that the audio file was received
         print("Received audio file:", uploaded_file.filename)
 
