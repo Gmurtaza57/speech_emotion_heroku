@@ -138,6 +138,14 @@ audio {
 .male .emotion {
     color: #337ab7; /* Masculine color, like blue */
 }
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Adjust this if you have other elements on the page. */
+    gap: 10px; /* Space between the items. */
+}
 
 #result {
     font-size: 24px;         /* Adjust the size as needed */
