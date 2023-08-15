@@ -83,7 +83,9 @@ def predict_emotion():
         print("Loaded audio file using librosa...") 
         # Make predictions
         live_preds = loaded_model.predict(twodim, batch_size=32, verbose=1)
+        print("Predictions:", live_preds)
         live_preds1 = live_preds.argmax(axis=1)
+
         live_abc = live_preds1.astype(int).flatten()
 
         # Define the emotion mapping
