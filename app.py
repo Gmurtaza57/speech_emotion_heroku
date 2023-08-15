@@ -23,11 +23,6 @@ def index():
 def predict_emotion():
         # Get the uploaded audio file from the request
         uploaded_file = request.files['audio']
-        if not uploaded_file.filename:
-            print("Filename is missing!")
-            return jsonify({'error': 'Filename is missing!'})
-
-
 
         # Print a message to confirm that the audio file was received
         print("Received audio file:", uploaded_file.filename)
@@ -37,8 +32,10 @@ def predict_emotion():
 
         # Save the uploaded audio file to S3
         bucket_name = "my-audio-bucket-1"  # Replace with your S3 bucket name
-        s3.upload_fileobj(uploaded_file, bucket_name, uploaded_file.filename)
-
+        try:
+            s3.upload_fileobj(uploaded_file, bucket_name, uploaded_file.filename)
+        except Exception as e:
+            print(f"Error uploading to S3: {e}")
         # File URL in S3
         # Load the audio file directly into librosa from S3
         audio_object = s3.get_object(Bucket="my-audio-bucket-1", Key=uploaded_file.filename)
