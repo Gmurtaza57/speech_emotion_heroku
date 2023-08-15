@@ -7,6 +7,7 @@ import io
 from keras.models import load_model
 import librosa
 from io import BytesIO
+import warnings
 
 app = Flask(__name__)
 
@@ -55,10 +56,16 @@ def predict_emotion():
 
 
         print("Loading audio file using librosa...")
-        try:
-            X, sample_rate = librosa.load(temp_filename, res_type='kaiser_fast', duration=2.5, sr=22050*2, offset=0.5)
-        except Exception as e:
-            print("Error loading audio:", str(e))
+
+        with warnings.catch_warnings(record=True) as w:
+            try:
+                X, sample_rate = librosa.load(temp_filename, res_type='kaiser_fast', duration=2.5, sr=22050*2, offset=0.5)
+            except Exception as e:
+                print("Error loading audio:", str(e))
+                print("Error type:", type(e))
+        
+    for warning in w:
+        print("Warning:", warning.message)
 
         print("X shape:", X.shape)
         print("Sample rate:", sample_rate)
@@ -68,6 +75,10 @@ def predict_emotion():
         livedf2 = feature_live
         livedf2 = pd.DataFrame(data=livedf2)
         livedf2 = livedf2.stack().to_frame().T
+        expected_shape = 216
+        if livedf2.shape[1] < expected_shape:
+            padding = np.zeros((livedf2.shape[0], expected_shape - livedf2.shape[1]))
+            livedf2 = np.hstack((livedf2, padding))
         twodim = np.expand_dims(livedf2, axis=2)
         print("Loaded audio file using librosa...") 
         # Make predictions
@@ -92,7 +103,7 @@ def predict_emotion():
         # Convert predictions to emotion labels using the provided mapping
         live_predictions = [emotion_mapping[prediction] for prediction in live_abc]
 
-
+        os.remove(temp_filename)
         # Return the prediction result in JSON format
         return jsonify({
             'emotion': live_predictions[0]  # Assuming you're predicting a single emotion
