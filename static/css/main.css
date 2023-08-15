@@ -139,12 +139,9 @@ audio {
     color: #337ab7; /* Masculine color, like blue */
 }
 .center-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Adjust this if you have other elements on the page. */
-    gap: 10px; /* Space between the items. */
+    text-align: center; /* This will center inline elements. */
+    width: 100%;
+    padding: 20px;
 }
 
 #result {
