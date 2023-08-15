@@ -42,8 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     listenButton.addEventListener('click', () => {
         const audio = document.getElementById('recordedAudio');
+        const blob = new Blob(recordedChunks, { type: 'audio/ogg; codecs=opus' });
+        const url = URL.createObjectURL(blob);
+        audio.src = url;
         audio.play();
     });
+    
 
     downloadRecordingButton.addEventListener('click', () => {
         const blob = new Blob(recordedChunks, { type: 'audio/ogg; codecs=opus' });

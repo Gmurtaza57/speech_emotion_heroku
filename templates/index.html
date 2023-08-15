@@ -6,11 +6,9 @@
     <title>Emotion Prediction</title>
 </head>
 <body>
-    <form action="/predict_emotion" method="post" enctype="multipart/form-data">
-        <input type="file" name="audio" accept=".wav" /> <!-- Change the accepted file types as needed -->
-        <button id="detectButton" type="submit">Detect Emotion</button>
-    </form> 
+
     <h1>Emotion Prediction</h1>
+    <h3>you can predict the emotion using the upload file or start and stop button and then clicking the detect button</h1>
     <button id="startButton">Start Recording</button>
     <button id="stopButton" disabled>Stop Recording</button>
     <button id="listenButton" style="display: none;">Listen to Recording</button>
@@ -18,7 +16,11 @@
     <a id="downloadEmotionButton" style="display: none;">Download Emotion Result</a>
     <audio id="recordedAudio" controls style="display: none;"></audio>
     <div id="result"></div>
-
+    
+    <form action="/predict_emotion" method="post" enctype="multipart/form-data">
+        <input type="file" name="audio" accept=".wav" /> <!-- Change the accepted file types as needed -->
+        <button id="detectButton" type="submit">Detect Emotion</button>
+    </form> 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>

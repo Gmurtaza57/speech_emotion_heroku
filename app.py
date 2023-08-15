@@ -23,6 +23,9 @@ def index():
 def predict_emotion():
         # Get the uploaded audio file from the request
         uploaded_file = request.files['audio']
+        if not uploaded_file.filename:
+            print("Filename is missing!")
+            return jsonify({'error': 'Filename is missing!'})
 
 
 
