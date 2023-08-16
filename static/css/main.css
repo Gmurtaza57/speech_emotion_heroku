@@ -121,7 +121,7 @@ audio {
     border-radius: 20px;
     text-align: center;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 10px;
     background-color: #f5f5f5;
     transition: background-color 0.3s ease;
 }
@@ -157,3 +157,4 @@ audio {
     margin-left: auto;       /* These two lines center the box */
     margin-right: auto;      /* if it's less wide than 80% of its container */
 }
+
